@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Ron Kelley</title>
+    <link>https://www.rkelleyrtp.com/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Ron Kelley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jan 2020 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.rkelleyrtp.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu Network config using netplan</title>
+      <link>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</link>
+      <pubDate>Wed, 01 Jan 2020 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</guid>
+      <description>Static IP Address example /etc/netplan/template.txt # -------------------------- # Static IP Address Example # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: no dhcp6: no addresses: [172.16.57.999/24] gateway4: 172.16.57.1 nameservers: addresses: [172.16.57.5,172.16.57.8] DHCP IP Address example # -------------------------- # DHCP IP Address Example - Single interface # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: yes Trunk example eth0 with static address eth1 with trunk/vlan interfaces
+# -------------------------- # TRUNK interface example # -------------------------- network: version: 2 ethernets: eth0: addresses: - 172.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://www.rkelleyrtp.com/tags/debian/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.rkelleyrtp.com/tags/networking/</loc>
     <lastmod>2020-01-01T12:00:00+00:00</lastmod>
   </url>
@@ -34,6 +29,11 @@
   
   <url>
     <loc>https://www.rkelleyrtp.com/categories/tech/</loc>
+    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.rkelleyrtp.com/tags/ubuntu/</loc>
     <lastmod>2020-01-01T12:00:00+00:00</lastmod>
   </url>
   
