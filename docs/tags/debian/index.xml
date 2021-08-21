@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian on Ron Kelley</title>
+    <link>https://www.rkelleyrtp.com/tags/debian/</link>
+    <description>Recent content in Debian on Ron Kelley</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jan 2020 12:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.rkelleyrtp.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advanced Networking Config for Debian 10</title>
+      <link>https://www.rkelleyrtp.com/post/2020-01-01-debian-10-network-config/</link>
+      <pubDate>Wed, 01 Jan 2020 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.rkelleyrtp.com/post/2020-01-01-debian-10-network-config/</guid>
+      <description>&lt;h2 id=&#34;debian-10-advanced-networking&#34;&gt;Debian 10 Advanced Networking&lt;/h2&gt;
+&lt;p&gt;*** Three dots ***&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

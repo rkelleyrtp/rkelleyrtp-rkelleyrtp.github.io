@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Advanced Networking Config for Debian 10" />
+    <meta property="og:title" content="Advanced Networking Config for Debian 10" />
+    <meta property="twitter:title" content="Advanced Networking Config for Debian 10" />
     
 
     
-    <meta name="description" content="Notes from Ron Kelley">
-    <meta property="og:description" content="Notes from Ron Kelley" />
-    <meta property="twitter:description" content="Notes from Ron Kelley" />
+    <meta name="description" content="Advanced networking config under Debian 10 including VLANs, sub-interfaces, statick routes, etc">
+    <meta property="og:description" content="Advanced networking config under Debian 10 including VLANs, sub-interfaces, statick routes, etc" />
+    <meta property="twitter:description" content="Advanced networking config under Debian 10 including VLANs, sub-interfaces, statick routes, etc" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="RKelleyRTP">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Tags-RKelleyRTP</title>
+    <title>Advanced Networking Config for Debian 10-RKelleyRTP</title>
 
-    <link rel="canonical" href="/tags/">
+    <link rel="canonical" href="/post/2020-01-01-debian-10-network-config/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -146,14 +146,41 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/pexels-jahoo-clouseau-388415.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/pexels-jahoo-clouseau-388415.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Ron Kelley </h1>
-                    
-		    <span class="subheading"><i><b>Feeds and Speeds drive the Internet!</b></i></span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/networking" title="Networking">
+                            Networking
+                        </a>
+                        
+                        <a class="tag" href="/tags/debian" title="Debian">
+                            Debian
+                        </a>
+                        
+                    </div>
+                    <h1>Advanced Networking Config for Debian 10</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Ron Kelley
+                         
+                        on 
+                        Wednesday, January 1, 2020
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -166,13 +193,129 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#debian-10-advanced-networking">Debian 10 Advanced Networking</a></li>
+        <li><a href="#two-hashes">Two Hashes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h2 id="debian-10-advanced-networking">Debian 10 Advanced Networking</h2>
+<p>*** Three dots ***</p>
+<p>More details
+inline image  
+  <img src="https://img.zhaohuabing.com/in-post/istio-install_and_example/5-a.png" alt="">
+
+</p>
+<p>
+  <img src="https://img.zhaohuabing.com/in-post/istio-install_and_example/6-a.png" alt="">
+
+<br>
+
+  <img src="https://img.zhaohuabing.com/in-post/istio-install_and_example/sidecar.jpg" alt="">
+
+</p>
+<p>_William Morgan <em><a href="https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/"><em>WHAT’S A SERVICE MESH? AND WHY DO I NEED ONE?</em></a></em>                                               _</p>
+<p>
+  <img src="https://img.zhaohuabing.com/in-post/istio-install_and_example/mesh1.png" alt="">
+
+</p>
+<h2 id="two-hashes">Two Hashes</h2>
+<p>Data
+Data
+Data</p>
+<h3 id="three-hashes">Three Hashes</h3>
+<p>Data
+Data
+Data</p>
+<p>Debian 10</p>
+<pre><code>code 
+</code></pre><h3 id="在server和工作节点上安装docker">在server和工作节点上安装docker</h3>
+<pre><code>curl https://releases.rancher.com/install-docker/1.12.sh | sh
+</code></pre><pre><code>NAME            CLUSTER-IP      EXTERNAL-IP        PORT(S)                                                  AGE
+istio-egress    10.43.192.74    &lt;none&gt;             80/TCP                                                   25s
+istio-ingress   10.43.16.24     10.12.25.116,...   80:30984/TCP,443:30254/TCP                               25s
+istio-mixer     10.43.215.250   &lt;none&gt;             9091/TCP,9093/TCP,9094/TCP,9102/TCP,9125/UDP,42422/TCP   26s
+istio-pilot     10.43.211.140   &lt;none&gt;             8080/TCP,443/TCP                                         25s
+</code></pre><p>istio-ca-367485603-qvbfl         1/1       Running   0          2m
+istio-egress-3571786535-gwbgk    1/1       Running   0          2m
+istio-ingress-2270755287-phwvq   1/1       Running   0          2m
+istio-mixer-1505455116-9hmcw     2/2       Running   0          2m
+istio-pilot-2278433625-68l34     1/1       Running   0          2m</p>
+<pre><code>
+
+</code></pre><p>istio
+image: docker.io/istio/proxy_debug:0.2.10
+imagePullPolicy: IfNotPresent
+name: istio-proxy
+resources: {}
+securityContext:
+privileged: true
+readOnlyRootFilesystem: false
+runAsUser: 1337
+volumeMounts:
+- mountPath: /etc/istio/proxy
+name: istio-envoy
+- mountPath: /etc/certs/
+name: istio-certs
+readOnly: true
+#使用init container修改iptable
+initContainers:
+- args:
+- -p
+- &ldquo;15001&rdquo;
+- -u
+- &ldquo;1337&rdquo;
+image: docker.io/istio/proxy_init:0.2.10
+imagePullPolicy: IfNotPresent
+name: istio-init</p>
+<pre><code>
+</code></pre><p>kubectl get pods</p>
+<p>NAME                              READY     STATUS    RESTARTS   AGE
+details-v1-3688945616-8hv8x       2/2       Running   0          1d
+productpage-v1-2055622944-cslw1   2/2       Running   0          1d
+ratings-v1-233971408-8dcnp        2/2       Running   0          1d
+reviews-v1-1360980140-474x6       2/2       Running   0          1d
+reviews-v2-1193607610-cfhb5       2/2       Running   0          1d
+reviews-v3-3340858212-b5c8k       2/2       Running   0          1d</p>
+<pre><code>
+查看reviews pod的中的container，可以看到pod中除reviews container外还部署了一个istio-proxy container
+
+</code></pre><p>kubectl get pod reviews-v3-3340858212-b5c8k -o jsonpath=&rsquo;{.spec.containers[*].name}&rsquo;</p>
+<ul>
+<li>Bullet 1</li>
+<li>Bullet 2</li>
+<li>Bullet 3</li>
+</ul>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/readme/" data-toggle="tooltip" data-placement="top" title="Clean White Theme for Hugo">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
                 
 <div id="disqus-comment"></div>
 
@@ -181,7 +324,7 @@
             </div>
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -195,13 +338,13 @@
                         
                         
                         <a href="/tags/debian" title="debian">
-                        debian
+                            debian
                         </a>
                         
                         
                         
                         <a href="/tags/networking" title="networking">
-                        networking
+                            networking
                         </a>
                         
                         
