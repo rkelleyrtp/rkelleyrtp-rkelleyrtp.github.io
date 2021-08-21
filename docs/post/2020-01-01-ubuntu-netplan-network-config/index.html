@@ -208,13 +208,13 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#ubuntu-netplan-complete-example">Ubuntu Netplan complete example</a></li>
+        <li></li>
       </ul>
     </li>
   </ul>
 </nav>
                 
-                <h2 id="ubuntu-netplan-complete-example">Ubuntu Netplan complete example</h2>
+                <h3 id="static-ip-address-example">Static IP Address example</h3>
 <pre><code>/etc/netplan/template.txt
 
 # --------------------------
@@ -231,10 +231,9 @@ network:
      gateway4: 172.16.57.1
      nameservers:
        addresses: [172.16.57.5,172.16.57.8]
-
-
-# --------------------------
-# DHCP IP Address Example
+</code></pre><h3 id="static-ip-address-example-1">Static IP Address example</h3>
+<pre><code># --------------------------
+# DHCP IP Address Example - Single interface
 # --------------------------
 network:
    version: 2
@@ -242,10 +241,10 @@ network:
    ethernets:
       eth0:
        dhcp4: yes
-
-
-
-# --------------------------
+</code></pre><h3 id="trunk-example">Trunk example</h3>
+<p>eth0 with static address
+eth1 with trunk/vlan interfaces</p>
+<pre><code># --------------------------
 # TRUNK interface example
 # --------------------------
 network:
@@ -253,24 +252,23 @@ network:
     ethernets:
         eth0:
             addresses:
-                - 172.16.57.999/24
-            gateway4: 172.16.57.1
+                - 172.16.155.91/24
+            gateway4: 172.16.155.1
             nameservers:
-                addresses: [172.16.57.5]
+                addresses: [172.16.155.254]
         eth1: {}
 
     vlans:
         vlan.101:
             id: 101
             link: eth1
-            addresses: [10.20.30.999/24]
+            addresses: [10.20.30.91/24]
         vlan.102:
             id: 102
             link: eth1
-            addresses: [40.50.60.999/24]
-
-
-# --------------------------
+            addresses: [40.50.60.91/24]
+</code></pre><h3 id="vlan-interfaces-wout-ip-addresses">VLAN interfaces w/out IP Addresses</h3>
+<pre><code># --------------------------
 # VLAN interface for LXD
 # --------------------------
 network:
@@ -296,9 +294,8 @@ network:
    vlan.2006:
        id: 2006
        link: eth1
-
-
-# --------------------------
+</code></pre><h3 id="bonding-interfaces-with-static-address">Bonding interfaces with static Address</h3>
+<pre><code># --------------------------
 # BONDING example
 # --------------------------
 network:
@@ -325,12 +322,8 @@ bonds:
       mode: 802.3ad
     nameservers:
       addresses: [172.16.57.5,172.16.57.8,84.200.69.80,84.200.70.40]
-
-
-
-
-
-# --------------------------
+</code></pre><h3 id="bonding-interfaces-with-vlans">Bonding interfaces with VLANs</h3>
+<pre><code># --------------------------
 # BONDING example with VLANs
 # --------------------------
 network:
@@ -360,12 +353,6 @@ bonds:
             id: 102
             link: bond0
             addresses: [192.168.102.1/24]
-
-
-
-
-
-
 
 </code></pre>
 
