@@ -280,13 +280,13 @@ pre code {
   line-height: 1.7;
 }
 .navbar-custom .navbar-brand {
-  font-weight: 800;
-  color: rgb(143, 6, 6);
+  font-weight: 900;
+  color: rgb(255, 255, 255);
   height: 56px;
   line-height: 25px;
 }
 .navbar-custom .navbar-brand:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(128, 128, 128);
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
@@ -296,7 +296,7 @@ pre code {
   letter-spacing: 1px;
 }
 .navbar-custom .nav li a:active {
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0);
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
@@ -307,13 +307,13 @@ pre code {
     font-size: 20px;
   }
   .navbar-custom .navbar-brand {
-    color:#2f4f4f;
+    color:white;
     padding: 20px;
     line-height: 20px;
   }
   .navbar-custom .navbar-brand:hover,
   .navbar-custom .navbar-brand:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255,);
   }
   .navbar-custom .nav li a {
     color: #fff;
@@ -434,7 +434,7 @@ pre code {
   .intro-header .site-heading h1,
   .intro-header .page-heading h1 {
     font-size: 80px;
-    color: rgba(47, 79, 79, 0.664);
+    color: rgba(255, 255, 255) ;
   }
 }
 .intro-header .post-heading h1 {
