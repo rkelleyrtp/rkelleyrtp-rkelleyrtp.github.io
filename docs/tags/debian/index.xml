@@ -12,13 +12,12 @@
     
     
     <item>
-      <title>Advanced Networking Config for Debian 10</title>
-      <link>https://www.rkelleyrtp.com/post/2020-01-01-debian-10-network-config/</link>
+      <title>Ubuntu Network config using netplan</title>
+      <link>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</link>
       <pubDate>Wed, 01 Jan 2020 12:00:00 +0000</pubDate>
       
-      <guid>https://www.rkelleyrtp.com/post/2020-01-01-debian-10-network-config/</guid>
-      <description>&lt;h2 id=&#34;debian-10-advanced-networking&#34;&gt;Debian 10 Advanced Networking&lt;/h2&gt;
-&lt;p&gt;*** Three dots ***&lt;/p&gt;</description>
+      <guid>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</guid>
+      <description>Ubuntu Netplan complete example /etc/netplan/template.txt # -------------------------- # Static IP Address Example # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: no dhcp6: no addresses: [172.16.57.999/24] gateway4: 172.16.57.1 nameservers: addresses: [172.16.57.5,172.16.57.8] # -------------------------- # DHCP IP Address Example # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: yes # -------------------------- # TRUNK interface example # -------------------------- network: version: 2 ethernets: eth0: addresses: - 172.16.57.999/24 gateway4: 172.16.57.1 nameservers: addresses: [172.</description>
     </item>
     
   </channel>

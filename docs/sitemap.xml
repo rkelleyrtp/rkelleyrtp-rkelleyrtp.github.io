@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.rkelleyrtp.com/post/2020-01-01-debian-10-network-config/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.rkelleyrtp.com/categories/</loc>
     <lastmod>2020-01-01T12:00:00+00:00</lastmod>
   </url>
@@ -39,6 +34,11 @@
   
   <url>
     <loc>https://www.rkelleyrtp.com/categories/tech/</loc>
+    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</loc>
     <lastmod>2020-01-01T12:00:00+00:00</lastmod>
   </url>
   
