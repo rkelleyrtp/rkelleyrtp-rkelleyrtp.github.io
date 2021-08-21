@@ -17,10 +17,8 @@
       <pubDate>Wed, 01 Jan 2020 12:00:00 +0000</pubDate>
       
       <guid>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</guid>
-      <description>&amp;lt;br&amp;gt; &amp;lt;br&amp;gt;
-Static IP Address example /etc/netplan/template.txt # -------------------------- # Static IP Address Example # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: no dhcp6: no addresses: [172.16.57.999/24] gateway4: 172.16.57.1 nameservers: addresses: [172.16.57.5,172.16.57.8] ``
-``
-DHCP IP Address example # -------------------------- # DHCP IP Address Example - Single interface # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: yes Trunk example eth0 with static address eth1 with trunk/vlan interfaces</description>
+      <description>IP Address Examples Static IP Address In this example, we have a static IP address assigned to eth0 with a list of DNS nameservers separated by commas.
+/etc/netplan/template.txt # -------------------------- # Static IP Address Example # -------------------------- network: version: 2 renderer: networkd ethernets: eth0: dhcp4: no dhcp6: no addresses: [172.16.1.999/24] gateway4: 172.16.1.1 nameservers: addresses: [172.16.1.5,172.16.1.8]   DHCP IP Address In this example, we are assigning a DHCP address to eth0.</description>
     </item>
     
     <item>
