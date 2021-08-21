@@ -208,13 +208,15 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#static-ip-address-example">Static IP Address example</a></li>
+        <li><a href="#static-ip-address-example-1">Static IP Address example</a></li>
+        <li><a href="#trunk-example">Trunk example</a></li>
       </ul>
     </li>
   </ul>
 </nav>
                 
-                <h3 id="static-ip-address-example">Static IP Address example</h3>
+                <h2 id="static-ip-address-example">Static IP Address example</h2>
 <pre><code>/etc/netplan/template.txt
 
 # --------------------------
@@ -231,7 +233,7 @@ network:
      gateway4: 172.16.57.1
      nameservers:
        addresses: [172.16.57.5,172.16.57.8]
-</code></pre><h3 id="static-ip-address-example-1">Static IP Address example</h3>
+</code></pre><h2 id="static-ip-address-example-1">Static IP Address example</h2>
 <pre><code># --------------------------
 # DHCP IP Address Example - Single interface
 # --------------------------
@@ -241,7 +243,7 @@ network:
    ethernets:
       eth0:
        dhcp4: yes
-</code></pre><h3 id="trunk-example">Trunk example</h3>
+</code></pre><h2 id="trunk-example">Trunk example</h2>
 <p>eth0 with static address
 eth1 with trunk/vlan interfaces</p>
 <pre><code># --------------------------
