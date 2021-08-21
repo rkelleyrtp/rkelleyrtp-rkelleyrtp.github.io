@@ -214,7 +214,7 @@
     <li><a href="#vlantrunk-interfaces">VLAN/Trunk interfaces</a>
       <ul>
         <li><a href="#single-vlan">Single VLAN</a></li>
-        <li><a href="#multiple-vlan">Multiple VLAN</a></li>
+        <li><a href="#multiple-vlans">Multiple VLANs</a></li>
         <li><a href="#vlan-interfaces-without-ip-addresses">VLAN interfaces without IP Addresses</a></li>
       </ul>
     </li>
@@ -276,7 +276,7 @@ network:
 <h1 id="vlantrunk-interfaces">VLAN/Trunk interfaces</h1>
 <h2 id="single-vlan">Single VLAN</h2>
 <p>Here we are creating a VLAN interface on eth1 (<code>vlan.101</code>).  Note the <code>eth1</code> interface in the &ldquo;ethernet&rdquo; section is a placeholder for later.</p>
-<p><strong>Note:</strong> Before adding the VLAN interfaces, make sure the VLAN package has been installed (<code>apt install vlan</code>).  Also, make sure to probe the VLAN module** (<code>modprobe vlan</code>)</p>
+<p><strong>Note:</strong> Before adding the VLAN interfaces, make sure the VLAN package has been installed (<code>apt install vlan</code>).  Also, make sure to probe the VLAN module** (<code>modprobe 8021q</code>) before rebooting.</p>
 <pre><code># --------------------------
 # Single VLAN/Trunk example
 # --------------------------
@@ -301,9 +301,9 @@ network:
   <img src="img/blank_white.png" alt="">
 
 </p>
-<h2 id="multiple-vlan">Multiple VLAN</h2>
-<p>Building on our example above, here we are creating multiple VLANS assigned to a eth1 (<em><strong>eth1.vlan101</strong></em> and <em><strong>eth1.vlan102</strong></em>).  Each VLAN interface is given a static IP address.</p>
-<p><strong>Note:</strong> Before adding the VLAN interfaces, make sure the VLAN package has been installed (<code>apt install vlan</code>).  Also, make sure to probe the VLAN module** (<code>modprobe vlan</code>)</p>
+<h2 id="multiple-vlans">Multiple VLANs</h2>
+<p>Building on our example above, here we are creating multiple VLANS assigned to interface <code>eth1</code> (<em><strong>eth1.vlan101</strong></em> and <em><strong>eth1.vlan102</strong></em>).  Each VLAN interface is given a static IP address.</p>
+<p><strong>Note:</strong> Before adding the VLAN interfaces, make sure the VLAN package has been installed (<code>apt install vlan</code>).  Also, make sure to probe the VLAN module** (<code>modprobe 8021q</code>) before rebooting.</p>
 <pre><code># --------------------------
 # Multiple VLAN/Trunk example
 # --------------------------
@@ -333,9 +333,9 @@ network:
 
 </p>
 <h2 id="vlan-interfaces-without-ip-addresses">VLAN interfaces without IP Addresses</h2>
-<p>In this example, we are creating multiple VLAN interfaces w/out assigning IP Addresses.  Why?  Sometimes, we need to create the interface but not assign an IP - as in <code>LXD</code> or <code>Docker</code></p>
+<p>In this example, we are creating multiple VLAN interfaces w/out assigning IP Addresses.  Why?  Sometimes, we need to create the interface but not assign an IP when it comes up - as in <code>LXD</code> or <code>Docker</code>.</p>
 <pre><code># --------------------------
-# VLAN interface for LXD
+# Example VLAN interfaces for LXD
 # --------------------------
 network:
  version: 2
@@ -354,11 +354,20 @@ network:
      dhcp6: false
 
  vlans:
+   vlan.2001:
+       id: 2001
+       link: eth1
+   vlan.2002:
+       id: 2002
+       link: eth1
+   vlan.2003:
+       id: 2003
+       link: eth1
+   vlan.2004:
+       id: 2004
+       link: eth1
    vlan.2005:
        id: 2005
-       link: eth1
-   vlan.2006:
-       id: 2006
        link: eth1
 </code></pre><hr>
 <p>
@@ -367,9 +376,10 @@ network:
 </p>
 <h1 id="bonding">Bonding</h1>
 <h2 id="bonding-interfaces-with-static-address">Bonding interfaces with static Address</h2>
-<p>Bonding allows us to combine multiple physical interfaces into a logical unit then assing IPs and/or VLAN tags to the unit.  I use this all the time on Linux boxes for HA configurations.</p>
-<p><strong>Remember:</strong> Bonding does NOT create a single LARGE interface from multiple NICs.  This technique is simply to allow multiple TCP/IP streams to access the large interface.  No single TCP stream can exceed the size of a single pipe.  However, this is perfect for HA servers (think NFS servers) that have multiple clients.</p>
-<p><strong>Note:</strong> Just like before, make sure the VLAN package has been installed (<code>apt install vlan</code>), and make sure to probe the VLAN module (<code>modprobe vlan</code>).  Finally, you need to probe the 802.1q module to enable bonding (<code>modprobe 8021q</code>)</p>
+<p>Bonding allows us to combine multiple physical interfaces into a logical unit then assign IPs and/or create VLAN tags to the unit.  I use this all the time on Linux boxes for HA configurations.</p>
+<p><strong>Remember:</strong> Bonding does NOT create a single LARGE interface from multiple NICs (eg: 4x1G does not equal a single 4G interface).  This technique is simply to allow multiple TCP/IP streams (ie: multiple client connections) to access the large interface.  No single TCP stream can exceed the size of a single pipe.  However, this is perfect for HA servers (think NFS) that have multiple clients.</p>
+<p><strong>Note-1:</strong> Just like before, make sure the VLAN package has been installed (<code>apt install vlan</code>), and make sure to probe the VLAN module (<code>modprobe 8021q</code>) before rebooting.</p>
+<p><strong>Note-2:</strong> Also see the <code>802.3ad</code> parameter below.  This parameter defines how the traffic will be spread across the bond.  Ensure the switch is setup properly to match this setting.  A great page that documents linux bonding modes can be found <strong><a href="https://www.kernel.org/doc/Documentation/networking/bonding.txt">here</a></strong>.  Just like before, make sure the VLAN package has been installed (<code>apt install vlan</code>), and make sure to probe the VLAN module (<code>modprobe 8021q</code>) before rebooting.</p>
 <pre><code># --------------------------
 # BONDING example
 # --------------------------
@@ -403,7 +413,7 @@ bonds:
 
 </p>
 <h2 id="bonding-interfaces-with-vlans">Bonding interfaces with VLANs</h2>
-<p>Our final example is a combination of all the above:  VLANs, bonding, static IP, etc.</p>
+<p>Our final example is a combination of all the above:  VLANs, bonding, static IP, etc.  In this example, we are creating a bond interface (<code>eth0</code> and <code>eth1</code>), creating VLAN tags on top of the bond, then assigning static IP Addresses to each <code>bond.vlanxx</code> interface.</p>
 <pre><code># --------------------------
 # BONDING example with VLANs
 # --------------------------
