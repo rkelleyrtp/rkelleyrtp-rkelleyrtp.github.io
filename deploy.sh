@@ -1,9 +1,12 @@
 #!/bin/bash
 
+SOURCE_DIR="$HOME/nc.rkelleyrtp.com/RKelleyRTP_Web_Site/hugo-rkelleyrtp"
+  DEST_DIR="$HOME/nc.rkelleyrtp.com/RKelleyRTP_Web_Site/rkelleyrtp-website/docs"
+
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
 # Build the project.
-RES=$(cd ../rkelleyrtp-hugo && hugo -d ../rkelleyrtp-website/docs )
+RES=$(cd $SOURCE_DIR &&  hugo -d $DEST_DIR)
 if [ $? -eq 0 ];  then
   cd ../rkelleyrtp-website 
 
