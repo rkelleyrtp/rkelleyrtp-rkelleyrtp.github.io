@@ -281,7 +281,7 @@ pre code {
 }
 .navbar-custom .navbar-brand {
   font-weight: 800;
-  color: #fff;
+  color: rgb(143, 6, 6);
   height: 56px;
   line-height: 25px;
 }
@@ -307,7 +307,7 @@ pre code {
     font-size: 20px;
   }
   .navbar-custom .navbar-brand {
-    color: #fff;
+    color:#2f4f4f;
     padding: 20px;
     line-height: 20px;
   }
@@ -434,6 +434,7 @@ pre code {
   .intro-header .site-heading h1,
   .intro-header .page-heading h1 {
     font-size: 80px;
+    color: rgba(47, 79, 79, 0.664);
   }
 }
 .intro-header .post-heading h1 {
