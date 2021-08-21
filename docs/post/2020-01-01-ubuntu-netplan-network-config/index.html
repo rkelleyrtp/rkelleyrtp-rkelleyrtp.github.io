@@ -206,17 +206,19 @@
                 </header>
                 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#static-ip-address-example">Static IP Address example</a></li>
+    <li><a href="#static-ip-address-example-1">Static IP Address example</a></li>
+    <li><a href="#trunk-example">Trunk example</a></li>
+    <li><a href="#vlan-interfaces-wout-ip-addresses">VLAN interfaces w/out IP Addresses</a></li>
+    <li><a href="#bonding-interfaces-with-static-address">Bonding interfaces with static Address</a>
       <ul>
-        <li><a href="#static-ip-address-example">Static IP Address example</a></li>
-        <li><a href="#static-ip-address-example-1">Static IP Address example</a></li>
-        <li><a href="#trunk-example">Trunk example</a></li>
+        <li></li>
       </ul>
     </li>
   </ul>
 </nav>
                 
-                <h2 id="static-ip-address-example">Static IP Address example</h2>
+                <h1 id="static-ip-address-example">Static IP Address example</h1>
 <pre><code>/etc/netplan/template.txt
 
 # --------------------------
@@ -233,7 +235,7 @@ network:
      gateway4: 172.16.57.1
      nameservers:
        addresses: [172.16.57.5,172.16.57.8]
-</code></pre><h2 id="static-ip-address-example-1">Static IP Address example</h2>
+</code></pre><h1 id="static-ip-address-example-1">Static IP Address example</h1>
 <pre><code># --------------------------
 # DHCP IP Address Example - Single interface
 # --------------------------
@@ -243,7 +245,7 @@ network:
    ethernets:
       eth0:
        dhcp4: yes
-</code></pre><h2 id="trunk-example">Trunk example</h2>
+</code></pre><h1 id="trunk-example">Trunk example</h1>
 <p>eth0 with static address
 eth1 with trunk/vlan interfaces</p>
 <pre><code># --------------------------
@@ -269,7 +271,7 @@ network:
             id: 102
             link: eth1
             addresses: [40.50.60.91/24]
-</code></pre><h3 id="vlan-interfaces-wout-ip-addresses">VLAN interfaces w/out IP Addresses</h3>
+</code></pre><h1 id="vlan-interfaces-wout-ip-addresses">VLAN interfaces w/out IP Addresses</h1>
 <pre><code># --------------------------
 # VLAN interface for LXD
 # --------------------------
@@ -296,7 +298,7 @@ network:
    vlan.2006:
        id: 2006
        link: eth1
-</code></pre><h3 id="bonding-interfaces-with-static-address">Bonding interfaces with static Address</h3>
+</code></pre><h1 id="bonding-interfaces-with-static-address">Bonding interfaces with static Address</h1>
 <pre><code># --------------------------
 # BONDING example
 # --------------------------
