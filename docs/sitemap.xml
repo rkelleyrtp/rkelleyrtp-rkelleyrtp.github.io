@@ -1,28 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>https://www.rkelleyrtp.com/post/readme/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/post/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/search/placeholder/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/top/about/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/top/books/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/categories/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/search/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/tags/</loc>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>https://www.rkelleyrtp.com/top/</loc>
   </url>
+  
 </urlset>
