@@ -239,8 +239,9 @@
 </li>
 </ul>
 <h2 id="add-link-to-existing-vswitch">Add link to existing vSwitch</h2>
-<p>Here we are adding a new link (<code>vmnic1</code>) to the default vSwitch (<code>vSwitch0</code>).  Once done, we will setup the failover policy to ensure the server is reachable if one of the links fail.</p>
-<pre><code> esxcli network vswitch standard uplink add -u vmnic1 -v vSwitch0
+<p>Here we are setting our server into maintenance mode, adding a new link (<code>vmnic1</code>) to the default vSwitch (<code>vSwitch0</code>).  Once done, we will setup the failover policy to ensure the server is reachable if one of the links fail.</p>
+<pre><code> esxcli system maintenanceMode set --enable true
+ esxcli network vswitch standard uplink add -u vmnic1 -v vSwitch0
  esxcli network vswitch standard policy failover set -a vmnic0,vmnic1 -v vSwitch0
  esxcli network vswitch standard portgroup policy failover set --active-uplinks vmnic0,vmnic1 --portgroup-name=&quot;Management Network&quot;
 </code></pre><h2 id="create-a-new-standard-vswitch-and-add-two-nics">Create a new standard vSwitch and add two NICs</h2>
@@ -326,7 +327,7 @@ Set our Syslog server.  <strong>Note:</strong> Make sure to change <code>$HOSTNA
 
 Backup our config and exit from maintenance mode.</p>
 <pre><code> /sbin/auto-backup.sh
- esxcli system maintenanceMode set --enable true
+ esxcli system maintenanceMode set --enable false
 
 </code></pre>
 
