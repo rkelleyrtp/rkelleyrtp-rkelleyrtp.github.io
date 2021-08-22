@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Ron Kelley">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://www.rkelleyrtp.com/img/pexels-jahoo-clouseau-388415.jpg">
+    <meta property="twitter:image" content="https://www.rkelleyrtp.com/img/pexels-jahoo-clouseau-388415.jpg" />
+    
+
+    
+    <meta name="title" content="Initial ESXi config from command-line" />
+    <meta property="og:title" content="Initial ESXi config from command-line" />
+    <meta property="twitter:title" content="Initial ESXi config from command-line" />
+    
+
+    
+    <meta name="description" content="Setting up an ESXi server using command line tools">
+    <meta property="og:description" content="Setting up an ESXi server using command line tools" />
+    <meta property="twitter:description" content="Setting up an ESXi server using command line tools" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="RKelleyRTP">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Initial ESXi config from command-line  -  Feeds and Speeds drive the Internet!</title>
+
+    <link rel="canonical" href="/post/2021-01-01-esxi-misc-commands/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><i>RKelleyRTP</i></a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/pexels-jahoo-clouseau-388415.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/networking" title="Networking">
+                            Networking
+                        </a>
+                        
+                        <a class="tag" href="/tags/vmware" title="VMware">
+                            VMware
+                        </a>
+                        
+                        <a class="tag" href="/tags/esxi" title="ESXi">
+                            ESXi
+                        </a>
+                        
+                    </div>
+                    <h1>Initial ESXi config from command-line</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Ron Kelley
+                         
+                        on 
+                        Friday, January 1, 2021
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#add-link-to-existing-vswitch">Add link to existing vSwitch</a></li>
+        <li><a href="#create-a-new-standard-vswitch-and-add-two-nics">Create a new standard vSwitch and add two NICs</a></li>
+        <li><a href="#add-vlans">Add VLANs</a></li>
+        <li><a href="#add-nfs-interface">Add NFS Interface</a></li>
+        <li><a href="#add-nfs-server">Add NFS server</a></li>
+        <li><a href="#misc-tuning">Misc Tuning</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <p>I have collected a number of cool commands that can manage ESXi over the years.  The list below is based on ESXi 6.7.  The commands below assume you have logged into the ESXi server via SSH as the <code>root</code> user.  Additionally, these commands were run on a newly installed server with 4x NICs.  The goal of this section:</p>
+<ul>
+<li>
+<p>Add two NICs for Management (<code>vSwitch0</code>)</p>
+</li>
+<li>
+<p>Add two NICs to a new vSwitch for all data traffic (NFS, customer data, etc)</p>
+</li>
+<li>
+<p>Assign IP Address for NFS connectivity</p>
+</li>
+<li>
+<p>Tune the system</p>
+<hr>
+</li>
+</ul>
+<h2 id="add-link-to-existing-vswitch">Add link to existing vSwitch</h2>
+<p>Here we are adding a new link (<code>vmnic1</code>) to the default vSwitch (<code>vSwitch0</code>).  Once done, we will setup the failover policy to ensure the server is reachable if one of the links fail.</p>
+<pre><code> esxcli network vswitch standard uplink add -u vmnic1 -v vSwitch0
+ esxcli network vswitch standard policy failover set -a vmnic0,vmnic1 -v vSwitch0
+ esxcli network vswitch standard portgroup policy failover set --active-uplinks vmnic0,vmnic1 --portgroup-name=&quot;Management Network&quot;
+</code></pre><h2 id="create-a-new-standard-vswitch-and-add-two-nics">Create a new standard vSwitch and add two NICs</h2>
+<p>In this example, we will create a new standard vSwitch (<code>vSwitch1</code>) and add two unused links (<code>vnnic2</code> and <code>vnmic3</code>).  Once done, we will setup the failover policy to ensure the server is reachable if one of the links fail.</p>
+<pre><code> network vswitch standard add --vswitch-name=vSwitch1
+ esxcli network vswitch standard uplink add -u vmnic2 -v vSwitch1
+ esxcli network vswitch standard uplink add -u vmnic3 -v vSwitch1
+ esxcli network vswitch standard policy failover set --active-uplinks vmnic2,vmnic3 --vswitch-name vSwitch1
+</code></pre><h2 id="add-vlans">Add VLANs</h2>
+<p>Once the vSwitch has been created with NICs, let&rsquo;s create some VLANs (<code>portgroups</code>) and set the MTU to 9000.</p>
+<pre><code> esxcli network vswitch standard portgroup add --portgroup-name=&quot;VLAN-100--DMZ&quot;        --vswitch-name=vSwitch1
+ esxcli network vswitch standard portgroup add --portgroup-name=&quot;VLAN-200--Production&quot; --vswitch-name=vSwitch1
+ esxcli network vswitch standard portgroup add --portgroup-name=&quot;VLAN-300--Dev-Test&quot;   --vswitch-name=vSwitch1
+ esxcli network vswitch standard portgroup add --portgroup-name=&quot;VLAN-400--Misc&quot;       --vswitch-name=vSwitch1
+ esxcli network vswitch standard portgroup add --portgroup-name=&quot;VLAN-500--OUTSIDE&quot;    --vswitch-name=vSwitch1
+ esxcli network vswitch standard portgroup add --portgroup-name=&quot;VLAN-2099--NFS&quot;       --vswitch-name=vSwitch1
+
+ esxcli network vswitch standard portgroup set --portgroup-name=&quot;VLAN-100--DMZ&quot;        --vlan-id=100
+ esxcli network vswitch standard portgroup set --portgroup-name=&quot;VLAN-200--Production&quot; --vlan-id=200
+ esxcli network vswitch standard portgroup set --portgroup-name=&quot;VLAN-300--Dev-Test&quot;   --vlan-id=300
+ esxcli network vswitch standard portgroup set --portgroup-name=&quot;VLAN-400--Misc&quot;       --vlan-id=400
+ esxcli network vswitch standard portgroup set --portgroup-name=&quot;VLAN-500--OUTSIDE&quot;    --vlan-id=500
+ esxcli network vswitch standard portgroup set --portgroup-name=&quot;VLAN-2099--NFS&quot;       --vlan-id=2099
+
+ esxcli network vswitch standard set --mtu 9000 --vswitch-name vSwitch1
+</code></pre><h2 id="add-nfs-interface">Add NFS Interface</h2>
+<p>Once the new vSwitch has been created, let&rsquo;s create a new port group named <code>VLAN-2099--NFS</code> with an IP Address 10.20.30.21/24 that will be used to connect to our NFS servers.</p>
+<pre><code> esxcli network vswitch standard portgroup policy failover set --failback no --portgroup-name &quot;VLAN-2099--NFS&quot;
+ esxcli network ip interface add --interface-name vmk1 --mtu 9000 --portgroup-name VLAN-2099--NFS
+ esxcli network ip interface ipv4 set --interface-name vmk1 --ipv4  10.20.30.21 --netmask 255.255.255.0 --type static
+</code></pre><h2 id="add-nfs-server">Add NFS server</h2>
+<p>Finally, it&rsquo;s time to add some NFS servers to store our VMs.  In this example, we have three remote NFS servers (<code>10.20.30.51</code>, <code>10.320.30.52</code>, and <code>10.30.50.53</code>) that hosts our VMs.  Each NFS server is running NFSv3 and sharing the <code>/export/ESX_VMs</code> directory.</p>
+<pre><code> esxcfg-nas -a -o 10.20.30.51 -s /export/ESX_VMs NFS-1
+ esxcfg-nas -a -o 10.20.30.52 -s /export/ESX_VMs NFS-2
+ esxcfg-nas -a -o 10.20.30.53 -s /export/ESX_VMs NFS-3
+</code></pre><p>
+  <img src="img/blank_white.png" alt="">
+
+
+At this point, our newly installed ESXi server has the proper number of network interfaces and VLANs plus it can connect to our NFS server.  Fantastic!</p>
+<hr>
+<h2 id="misc-tuning">Misc Tuning</h2>
+<p>Tuning various settings&hellip;</p>
+<pre><code>  vim-cmd hostsvc/vmotion/vnic_set vmk1                                           &lt;-- Set our vMotion interface
+  esxcli system settings advanced set -o /UserVars/SuppressShellWarning -i 1      &lt;-- Supress the shell warning 
+  vim-cmd hostsvc/autostartmanager/enable_autostart true                          &lt;-- Enable autostart of VMs
+  vim-cmd hostsvc/autostartmanager/update_defaults 120 120 &quot;GuestShutdown&quot; true   &lt;-- Set Guest shutdown timer
+</code></pre><p>
+  <img src="img/blank_white.png" alt="">
+
+
+Tune our TCP stack:</p>
+<pre><code> esxcli system settings advanced set --option /Net/TcpipHeapSize --int-value 30
+ esxcli system settings advanced set --option /Net/TcpipHeapMax --int-value 120
+ esxcli system settings advanced set --option /NFS/HeartbeatMaxFailures --int-value 10
+ esxcli system settings advanced set --option /NFS/HeartbeatFrequency --int-value 20
+ esxcli system settings advanced set --option /NFS/HeartbeatTimeout --int-value 10
+ esxcli system settings advanced set --option /NFS/MaxVolumes --int-value 256
+ esxcli system settings advanced set --option /NFS/MaxQueueDepth --int-value 64
+ esxcli system settings advanced set --option /Net/ReversePathFwdCheckPromisc --int-value 1
+</code></pre><p>
+  <img src="img/blank_white.png" alt="">
+
+
+Set NTP</p>
+<pre><code> echo restrict default kod nomodify notrap noquerynopeer &gt; /etc/ntp.conf
+ echo restrict 127.0.0.1 &gt;&gt; /etc/ntp.conf
+ echo server 0.us.pool.ntp.org &gt;&gt; /etc/ntp.conf
+ echo server 1.us.pool.ntp.org &gt;&gt; /etc/ntp.conf
+ echo server 2.us.pool.ntp.org &gt;&gt; /etc/ntp.conf
+ echo driftfile /etc/ntp.drift &gt;&gt; /etc/ntp.conf
+ /sbin/chkconfig ntpd on
+</code></pre><p>
+  <img src="img/blank_white.png" alt="">
+
+
+Set our Syslog server.  <strong>Note:</strong> Make sure to change <code>$HOSTNAME</code> below to the correct server hostname.</p>
+<pre><code> mkdir -p /vmfs/volumes/NFS-1/ESX_SERVER_LOGS
+ esxcli system syslog config set --logdir=/vmfs/volumes/NFS-1/ESX_SERVER_LOGS/$HOSTNAME
+</code></pre><p>
+  <img src="img/blank_white.png" alt="">
+
+
+Backup our config and exit from maintenance mode.</p>
+<pre><code> /sbin/auto-backup.sh
+ esxcli system maintenanceMode set --enable true
+
+</code></pre>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/2020-01-01-ubuntu-netplan-network-config/" data-toggle="tooltip" data-placement="top" title="Ubuntu Network config using netplan">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/esxi" title="esxi">
+                            esxi
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/networking" title="networking">
+                            networking
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ubuntu" title="ubuntu">
+                            ubuntu
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/vmware" title="vmware">
+                            vmware
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Ron Kelley 2021
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -434,12 +434,18 @@ bonds:
     interfaces:
       - eth0
       - eth1
+    parameters:
+      mode: 802.3ad
 
     vlans:
         vlan.101:
             id: 101
             link: bond0
-            addresses: [192.168.101.1/24]
+            addresses: [192.168.101.101/24]
+            gateway4: 192.168.101.1
+            nameservers:
+              addresses: [8.8.8.8,4.2.2.2]
+            
         vlan.102:
             id: 102
             link: bond0
@@ -451,6 +457,11 @@ bonds:
                 <hr>
                 <ul class="pager">
                     
+                    
+                    <li class="next">
+                        <a href="/post/2021-01-01-esxi-misc-commands/" data-toggle="tooltip" data-placement="top" title="Initial ESXi config from command-line">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -475,6 +486,12 @@ bonds:
                         
                         
                         
+                        <a href="/tags/esxi" title="esxi">
+                            esxi
+                        </a>
+                        
+                        
+                        
                         <a href="/tags/networking" title="networking">
                             networking
                         </a>
@@ -483,6 +500,12 @@ bonds:
                         
                         <a href="/tags/ubuntu" title="ubuntu">
                             ubuntu
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/vmware" title="vmware">
+                            vmware
                         </a>
                         
                         

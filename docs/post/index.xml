@@ -6,10 +6,17 @@
     <description>Recent content in Posts on Ron Kelley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jan 2020 12:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.rkelleyrtp.com/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 01 Jan 2021 12:00:00 +0000</lastBuildDate><atom:link href="https://www.rkelleyrtp.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Initial ESXi config from command-line</title>
+      <link>https://www.rkelleyrtp.com/post/2021-01-01-esxi-misc-commands/</link>
+      <pubDate>Fri, 01 Jan 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://www.rkelleyrtp.com/post/2021-01-01-esxi-misc-commands/</guid>
+      <description>I have collected a number of cool commands that can manage ESXi over the years. The list below is based on ESXi 6.7. The commands below assume you have logged into the ESXi server via SSH as the root user. Additionally, these commands were run on a newly installed server with 4x NICs. The goal of this section:
+  Add two NICs for Management (vSwitch0)
+  Add two NICs to a new vSwitch for all data traffic (NFS, customer data, etc)</description>
+    </item>
     
     <item>
       <title>Ubuntu Network config using netplan</title>

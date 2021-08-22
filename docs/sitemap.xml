@@ -1,65 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.rkelleyrtp.com/categories/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.rkelleyrtp.com/tags/esxi/</loc>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.rkelleyrtp.com/post/2021-01-01-esxi-misc-commands/</loc>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/tags/networking/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/post/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/tags/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/categories/tech/</loc>
-    <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.rkelleyrtp.com/tags/vmware/</loc>
+    <lastmod>2021-01-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/tags/ubuntu/</loc>
     <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/post/2020-01-01-ubuntu-netplan-network-config/</loc>
     <lastmod>2020-01-01T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/search/placeholder/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/top/about/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/top/books/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/search/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.rkelleyrtp.com/top/</loc>
   </url>
-  
 </urlset>
