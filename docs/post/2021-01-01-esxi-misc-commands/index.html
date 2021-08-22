@@ -277,13 +277,7 @@
 <pre><code> esxcfg-nas -a -o 10.20.30.51 -s /export/ESX_VMs NFS-1
  esxcfg-nas -a -o 10.20.30.52 -s /export/ESX_VMs NFS-2
  esxcfg-nas -a -o 10.20.30.53 -s /export/ESX_VMs NFS-3
-</code></pre><p>
-  <img src="img/blank_white.png" alt="">
-
-
-At this point, our newly installed ESXi server has the proper number of network interfaces and VLANs plus it can connect to our NFS server.  Fantastic!</p>
-<hr>
-<h2 id="misc-tuning">Misc Tuning</h2>
+</code></pre><h2 id="misc-tuning">Misc Tuning</h2>
 <p>Tuning various settings&hellip;</p>
 <pre><code>  vim-cmd hostsvc/vmotion/vnic_set vmk1                                           &lt;-- Set our vMotion interface
   esxcli system settings advanced set -o /UserVars/SuppressShellWarning -i 1      &lt;-- Supress the shell warning 
